@@ -29,7 +29,7 @@ public class PActividad extends javax.swing.JPanel {
 
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_Actividad = new javax.swing.JTable();
+        tblActividad = new javax.swing.JTable();
         txtId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -41,11 +41,12 @@ public class PActividad extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btn_Buscar = new javax.swing.JButton();
-        txt_Buscar = new javax.swing.JTextField();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblEstiloViaje = new javax.swing.JTable();
-        btnEliminarT = new javax.swing.JButton();
+        btnEliminarTipo = new javax.swing.JButton();
         btnAgregarTipo = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(820, 540));
@@ -55,7 +56,12 @@ public class PActividad extends javax.swing.JPanel {
         jLabel6.setText("Actividades");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tbl_Actividad.setModel(new javax.swing.table.DefaultTableModel(
+        tblActividad = new javax.swing.JTable()
+        {   public boolean isCellEditable( int rowIndex, int colIndex)
+            {   return false;
+            }
+        };
+        tblActividad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -71,11 +77,13 @@ public class PActividad extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbl_Actividad);
-        if (tbl_Actividad.getColumnModel().getColumnCount() > 0) {
-            tbl_Actividad.getColumnModel().getColumn(0).setPreferredWidth(0);
-            tbl_Actividad.getColumnModel().getColumn(1).setResizable(false);
-            tbl_Actividad.getColumnModel().getColumn(2).setResizable(false);
+        tblActividad.setFocusable(false);
+        tblActividad.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblActividad);
+        if (tblActividad.getColumnModel().getColumnCount() > 0) {
+            tblActividad.getColumnModel().getColumn(0).setPreferredWidth(0);
+            tblActividad.getColumnModel().getColumn(1).setResizable(false);
+            tblActividad.getColumnModel().getColumn(2).setResizable(false);
         }
 
         txtId.setBorder(null);
@@ -107,6 +115,11 @@ public class PActividad extends javax.swing.JPanel {
         btn_Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.PNG"))); // NOI18N
         btn_Buscar.setBorder(null);
 
+        tblEstiloViaje = new javax.swing.JTable()
+        {   public boolean isCellEditable( int rowIndex, int colIndex)
+            {   return false;
+            }
+        };
         tblEstiloViaje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -123,6 +136,8 @@ public class PActividad extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblEstiloViaje.setFocusable(false);
+        tblEstiloViaje.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tblEstiloViaje);
         if (tblEstiloViaje.getColumnModel().getColumnCount() > 0) {
             tblEstiloViaje.getColumnModel().getColumn(0).setMinWidth(0);
@@ -131,9 +146,11 @@ public class PActividad extends javax.swing.JPanel {
             tblEstiloViaje.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        btnEliminarT.setText("Eliminar");
+        btnEliminarTipo.setText("Eliminar");
 
         btnAgregarTipo.setText("Agregar");
+
+        btnReporte.setText("Generar reporte ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -175,18 +192,24 @@ public class PActividad extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btn_Buscar))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnAgregarTipo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnEliminarT)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(btnAgregarTipo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnEliminarTipo))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(78, 78, 78)))))
                         .addGap(46, 46, 46))))
         );
         layout.setVerticalGroup(
@@ -218,8 +241,10 @@ public class PActividad extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnActualizar)))
                         .addGap(22, 22, 22)
-                        .addComponent(btn_Buscar))
-                    .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Buscar)
+                            .addComponent(btnReporte)))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
@@ -228,7 +253,7 @@ public class PActividad extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregarTipo)
-                            .addComponent(btnEliminarT))))
+                            .addComponent(btnEliminarTipo))))
                 .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -240,7 +265,8 @@ public class PActividad extends javax.swing.JPanel {
     public javax.swing.JButton btnAgregarTipo;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnEliminarT;
+    public javax.swing.JButton btnEliminarTipo;
+    public javax.swing.JButton btnReporte;
     public javax.swing.JButton btn_Buscar;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -248,11 +274,11 @@ public class PActividad extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
+    public javax.swing.JTable tblActividad;
     public javax.swing.JTable tblEstiloViaje;
-    public javax.swing.JTable tbl_Actividad;
+    public javax.swing.JTextField txtBuscar;
     public javax.swing.JTextArea txtDescripcion;
     public javax.swing.JTextField txtId;
     public javax.swing.JTextField txtNombre;
-    public javax.swing.JTextField txt_Buscar;
     // End of variables declaration//GEN-END:variables
 }
