@@ -5,34 +5,21 @@
  */
 package controlador;
 
-import static controlador.controlPNuevoViaje.usuario;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.Image;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 import modelo.ModeloEditarViaje;
 import modelo.modeloPerfil;
 import vista.Inicio;
@@ -131,9 +118,6 @@ public class ControlEditarViaje implements ActionListener, PropertyChangeListene
                     
                 }
                 //se añade el panel del texto al panel de actividades
-                
-                
- 
             }
         }
         
