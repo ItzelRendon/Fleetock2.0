@@ -160,7 +160,7 @@ FROM
 	<detail>
 		<band height="18" splitType="Stretch">
 			<frame>
-				<reportElement style="Title" mode="Opaque" x="0" y="0" width="554" height="18" uuid="2b1f7e18-6512-446f-ac05-ea75006bfea0"/>
+				<reportElement style="Title" mode="Opaque" x="0" y="0" width="555" height="18" uuid="2b1f7e18-6512-446f-ac05-ea75006bfea0"/>
 				<box>
 					<topPen lineWidth="0.5" lineColor="#000000"/>
 					<leftPen lineWidth="0.5" lineColor="#000000"/>
@@ -168,7 +168,7 @@ FROM
 					<rightPen lineWidth="0.5" lineColor="#000000"/>
 				</box>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="407" y="0" width="146" height="18" forecolor="#FFFFFF" uuid="4e10c6a2-ce4b-4877-94b4-41dc0c24d7ee"/>
+					<reportElement style="Detail" positionType="Float" x="407" y="0" width="148" height="18" forecolor="#FFFFFF" uuid="4e10c6a2-ce4b-4877-94b4-41dc0c24d7ee"/>
 					<box topPadding="0" leftPadding="3" bottomPadding="3" rightPadding="3">
 						<leftPen lineWidth="0.5" lineColor="#000000"/>
 						<rightPen lineWidth="0.5"/>
@@ -209,7 +209,7 @@ FROM
 					<textFieldExpression><![CDATA[$F{estiloviaje_presupuesto_max}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="450" y="0" width="103" height="18" uuid="352e39d4-f3d6-4e7e-8595-9cec7c8ac0da"/>
+					<reportElement style="Detail" x="439" y="0" width="116" height="18" uuid="352e39d4-f3d6-4e7e-8595-9cec7c8ac0da"/>
 					<box topPadding="0" leftPadding="3" bottomPadding="3" rightPadding="3">
 						<leftPen lineWidth="0.0"/>
 						<bottomPen lineWidth="0.0"/>

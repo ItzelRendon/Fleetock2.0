@@ -85,6 +85,7 @@ public class AdministradorMenu extends javax.swing.JPanel {
 
         jScrollPane2.setBorder(null);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         panelMenu.setBackground(new java.awt.Color(93, 66, 135));

@@ -129,7 +129,7 @@ FROM
 	<detail>
 		<band height="18" splitType="Stretch">
 			<frame>
-				<reportElement style="Title" mode="Opaque" x="0" y="0" width="555" height="18" uuid="2b1f7e18-6512-446f-ac05-ea75006bfea0"/>
+				<reportElement style="Title" mode="Opaque" x="0" y="0" width="554" height="18" uuid="2b1f7e18-6512-446f-ac05-ea75006bfea0"/>
 				<box>
 					<topPen lineWidth="0.5" lineColor="#000000"/>
 					<leftPen lineWidth="0.5" lineColor="#000000"/>
