@@ -106,7 +106,7 @@ public class controlAdministrador_Usuario implements ActionListener, MouseListen
         }
         //Boton Actualizar
         else if(vista.btn_Actualizar == evento.getSource()) {
-            if(modelo.ActualizarUsuario(Integer.parseInt(vista.txt_Id.getText()), vista.txt_Usuario.getText(), vista.txt_Contraseña.getText(),vista.txt_Estatus.getText(), vista.txt_Tipo.getText())){
+            if(modelo.ActualizarUsuario(Integer.parseInt(vista.txt_Id.getText()), vista.txt_Usuario.getText(), vista.txt_Contraseña.getText(),vista.txt_Tipo.getText())){
                 JOptionPane.showMessageDialog(null, "Usuario actualizado exitosamente");
                 this.vista.tbl_Login.setModel(modelo.BloquearUsuariosConsultar());
                 Limpiar();
@@ -135,8 +135,7 @@ public class controlAdministrador_Usuario implements ActionListener, MouseListen
                  vista.txt_Id.setText(String.valueOf(vista.tbl_Login.getValueAt(fila, 0)));
                  vista.txt_Usuario.setText(String.valueOf(vista.tbl_Login.getValueAt(fila, 1)));
                  vista.txt_Contraseña.setText(String.valueOf(vista.tbl_Login.getValueAt(fila, 2)));
-                 vista.txt_Estatus.setText(String.valueOf(vista.tbl_Login.getValueAt(fila, 3)));
-                 vista.txt_Tipo.setText(String.valueOf(vista.tbl_Login.getValueAt(fila, 4)));
+                 vista.txt_Tipo.setText(String.valueOf(vista.tbl_Login.getValueAt(fila, 3)));
              }
             }
          }

@@ -18,7 +18,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import javax.swing.*;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.modeloAdministrador_Destino2;
@@ -29,26 +28,27 @@ import vista.Administrador_Destino2;
 public class controlAdministrador_Destino implements ActionListener, MouseListener{
      private modeloAdministrador_Destino modelo;
      private Administrador_Destino vista;
-     private Administrador_Destino2 vistaDestino2;
+     private AdministradorMenu menu;
      //Se crea una carpeta en el Disco C
      private String destino = "C:/Fleetock/img/administrador/";
      private JFileChooser archivo = new JFileChooser();
      int ventana =0;
      String archi="";
      public int p=0;
+     int bandera=0;
+     int idDestinoNuevo;
     
-     public controlAdministrador_Destino(modeloAdministrador_Destino modelo, Administrador_Destino vista, Administrador_Destino2 vistaDestino2){
+     public controlAdministrador_Destino(modeloAdministrador_Destino modelo, Administrador_Destino vista, AdministradorMenu menu){
          this.modelo = modelo;
          this.vista = vista;
-         this.vistaDestino2=vistaDestino2;
+         this.menu = menu;
          this.vista.btn_Insertar.addActionListener(this);
          this.vista.btn_Eliminar.addActionListener(this);
          this.vista.btn_Actualizar.addActionListener(this);
          this.vista.tbl_Destino.addMouseListener(this);
          this.vista.btn_Seleccionar.addActionListener(this);
-         this.vista.btn_BorrarTexto.addActionListener(this);
+         this.vista.btn_Cancelar.addActionListener(this);
          this.vista.btn_Buscar.addActionListener(this);
-         this.vista.btn_Act.addActionListener(this);
          
          desabilitar();
      }
@@ -63,7 +63,6 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
         vista.txt_Id.setText("");
         vista.txt_Nombre.setText("");
         vista.txt_Pais.setText("");
-        vista.txt_Clima.setText("");
         vista.txt_Foto.setText("");
         vista.lbl_Foto.setIcon(null);
         vista.lbl_Foto.removeAll();
@@ -74,33 +73,33 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
      //Se valida si los campos estas vacios o no
      public String validacionCamposVacios()
     {
-        if(vista.txt_Nombre.getText().isEmpty() || vista.txt_Pais.getText().isEmpty() || vista.txt_Clima.getText().isEmpty() || vista.txt_Foto.getText().isEmpty())
+        if(vista.txt_Nombre.getText().isEmpty() || vista.txt_Pais.getText().isEmpty() || bandera==0)
             return "Favor de llenar todos los campos"; 
         else return null;
     }
      
      //Habilita botones
      public void habilitar(){
-         vista.btn_BorrarTexto.setEnabled(true);
+         vista.btn_Cancelar.setEnabled(true);
          vista.btn_Actualizar.setEnabled(true);
          vista.btn_Eliminar.setEnabled(true);
-         vista.btn_Act.setEnabled(true);
      }
      
      //Desabilita botones
      public void desabilitar(){
-         vista.btn_BorrarTexto.setEnabled(false);
+         vista.btn_Cancelar.setEnabled(false);
          vista.btn_Actualizar.setEnabled(false);
          vista.btn_Eliminar.setEnabled(false);
-         vista.btn_Act.setEnabled(false);
      }
      
      //Compara si los campos no estan vacios para habilitar los botones
      public void CamposVacios(){
-        if(vista.txt_Id.getText()!="" && vista.txt_Nombre.getText()!="" && vista.txt_Pais.getText()!="" && vista.txt_Clima.getText()!="" && vista.txt_Foto.getText()!=""){
+        if(vista.txt_Nombre.getText()!="" && vista.txt_Pais.getText()!="" && bandera==0)
+        {
             desabilitar();
         }
-        else{
+        else
+        {
              habilitar();
         }
      }
@@ -109,35 +108,43 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
      public void actionPerformed(ActionEvent evento){
          CamposVacios();//Funcion para habilitar 
          if(vista.btn_Insertar == evento.getSource()) {
-            //if(validacionCamposVacios()==null)
-            //{
-                if(ventana == JFileChooser.APPROVE_OPTION)
-                { 
-                    //Genera un fichero
-                    File fichero= archivo.getSelectedFile();
-                    String ruta = fichero.getAbsolutePath();
-                    String nombre = fichero.getName(); 
-                    archi = destino + ""+ nombre; 
-                    File folder = new File(destino); 
-                    if(!folder.exists())
-                        folder.mkdirs(); 
-                    //Genera la ruta donde se guarda la imagen
-                    copyFile_Java(ruta,archi); 
-                    vista.txt_Foto.setText(archi);
-                }
-                else 
-                {
-                   System.out.println(""+vista.txt_Foto.getText());
-                }
-                //Inserta Destino
-                if(modelo.destinoInsertar(vista.txt_Nombre.getText(), vista.txt_Pais.getText(), vista.txt_Clima.getText(), vista.txt_Foto.getText())){
-                    JOptionPane.showMessageDialog(null, "Registro insertado exitosamente");
-                    this.vista.tbl_Destino.setModel(modelo.destinoConsultar());
-                    Limpiar();
-                }
-          //}
-         //else 
-            //JOptionPane.showMessageDialog(null, ""+validacionCamposVacios());
+//             if(validacionCamposVacios()==null)
+//             {
+//                 if(ventana == JFileChooser.APPROVE_OPTION)
+//                    { 
+//                    //Genera un fichero
+//                    File fichero= archivo.getSelectedFile();
+//                    String ruta = fichero.getAbsolutePath();
+//                    String nombre = fichero.getName(); 
+//                    archi = destino + ""+ nombre; 
+//                    File folder = new File(destino); 
+//                    if(!folder.exists())
+//                        folder.mkdirs(); 
+//                    //Genera la ruta donde se guarda la imagen
+//                    copyFile_Java(ruta,archi); 
+//                    vista.txt_Foto.setText(archi);
+//                    }
+//                     //Inserta Destino
+//                    if(modelo.destinoInsertar(vista.txt_Nombre.getText(), vista.txt_Pais.getText(), vista.txt_Foto.getText()))
+//                    {
+//                        JOptionPane.showMessageDialog(null, "Registro insertado exitosamente");
+//                        this.vista.tbl_Destino.setModel(modelo.destinoConsultar());
+//                        Limpiar();
+                        idDestinoNuevo=modelo.ConsultarID();
+                        this.vista.jpndestino.removeAll();
+                        this.vista.jpndestino.revalidate();
+                        this.vista.jpndestino.repaint();
+                        Administrador_Destino2 panel = new  Administrador_Destino2();
+                        modeloAdministrador_Destino2 modelo = new modeloAdministrador_Destino2(); 
+                        controlAdministrador_Destino2 control = new controlAdministrador_Destino2(modelo, panel, idDestinoNuevo, menu); 
+                        this.vista.jpndestino.add(panel);
+                        this.vista.jpndestino.revalidate();
+                        this.vista.jpndestino.repaint();
+                        control.iniciarVista();
+                   // }
+           //  }
+//         else 
+//            JOptionPane.showMessageDialog(null, ""+validacionCamposVacios());
      }
          //Boton Eliminar
          if(vista.btn_Eliminar == evento.getSource()) {
@@ -146,7 +153,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
                     "¿Estás seguro que deseas eliminar este registro?", "Fleetock",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                        if(modelo.destinoEliminar(Integer.parseInt(vista.txt_Id.getText()), vista.txt_Nombre.getText(), vista.txt_Pais.getText(), vista.txt_Clima.getText(), vista.txt_Foto.getText())){
+                        if(modelo.destinoEliminar(Integer.parseInt(vista.txt_Id.getText()), vista.txt_Nombre.getText(), vista.txt_Pais.getText(), vista.txt_Foto.getText())){
                            File dir = new File(destino); 
                            String[] ficheros = dir.list(); 
                            File archivoel = new File(destino+ficheros[p]);
@@ -160,7 +167,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
          }
          //Boton Actualizar
          else if(vista.btn_Actualizar == evento.getSource()) {
-             if(validacionCamposVacios()==null)
+            if(validacionCamposVacios()==null)
             {
                 if(ventana == JFileChooser.APPROVE_OPTION)
                 {   
@@ -176,7 +183,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
                     vista.txt_Foto.setText(archi);
                 }
                 //Se manda llamar el modelo
-                if(modelo.destinoActualizar(Integer.parseInt(vista.txt_Id.getText()), vista.txt_Nombre.getText(), vista.txt_Pais.getText(), vista.txt_Clima.getText(), vista.txt_Foto.getText())){
+                if(modelo.destinoActualizar(Integer.parseInt(vista.txt_Id.getText()), vista.txt_Nombre.getText(), vista.txt_Pais.getText(), vista.txt_Foto.getText())){
                 JOptionPane.showMessageDialog(null, "Registro actualizado exitosamente");
                 this.vista.tbl_Destino.setModel(modelo.destinoConsultar());
                 Limpiar();
@@ -185,7 +192,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
             else 
             JOptionPane.showMessageDialog(null, ""+validacionCamposVacios());
          }
-         else if(vista.btn_BorrarTexto == evento.getSource()) {
+         else if(vista.btn_Cancelar == evento.getSource()) {
                  Limpiar();
                  this.vista.tbl_Destino.setModel(modelo.destinoConsultar());
          }
@@ -207,6 +214,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
                 foto = foto.getScaledInstance(159, 171, Image.SCALE_DEFAULT);
                 vista.lbl_Foto.setIcon(new ImageIcon(foto));
                 habilitar();
+                bandera=1;
             }
          }
          else if(vista.btn_Buscar == evento.getSource()) {
@@ -214,12 +222,6 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
                 this.vista.tbl_Destino.setModel(modelo.Buscador(vista.txt_Buscar.getText()));
                 vista.txt_Buscar.setText("");
         }
-         else if(vista.btn_Act == evento.getSource()) { 
-            //Inicia Vista nueva Destino2
-            modeloAdministrador_Destino2 modelo = new modeloAdministrador_Destino2(); 
-            controlAdministrador_Destino2 con = new controlAdministrador_Destino2(modelo,vistaDestino2, this.vista.txt_Id.getText()); 
-            con.iniciarVista(); 
-         }
      }
      
      //Guarda la Imagen
@@ -252,8 +254,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
                  vista.txt_Id.setText(String.valueOf(vista.tbl_Destino.getValueAt(fila, 0)));
                  vista.txt_Nombre.setText(String.valueOf(vista.tbl_Destino.getValueAt(fila, 1)));
                  vista.txt_Pais.setText(String.valueOf(vista.tbl_Destino.getValueAt(fila, 2)));
-                 vista.txt_Clima.setText(String.valueOf(vista.tbl_Destino.getValueAt(fila, 3)));
-                 vista.txt_Foto.setText(String.valueOf(vista.tbl_Destino.getValueAt(fila, 4)));
+                 vista.txt_Foto.setText(String.valueOf(vista.tbl_Destino.getValueAt(fila, 3)));
             }
             //Busca si la imagen existe en el fichero por medio de su ruta y la muestra
             File dir = new File(destino); 
@@ -261,7 +262,7 @@ public class controlAdministrador_Destino implements ActionListener, MouseListen
             for(p=0; p<dir.list().length; p++)
             {   
                 //Compara si existe imagen
-                if(String.valueOf(vista.tbl_Destino.getValueAt(fila, 4)).equals(destino+ficheros[p]))
+                if(String.valueOf(vista.tbl_Destino.getValueAt(fila, 3)).equals(destino+ficheros[p]))
                 break;  
             }
             if(ficheros == null)

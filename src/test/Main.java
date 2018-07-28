@@ -14,6 +14,6 @@ public class Main {
         vistaLogin v = new vistaLogin();
         vistaIniciarSesion np = new vistaIniciarSesion(); 
         controlLogin co = new controlLogin(mo,v,np);
-        co.iniciarVista();
+        co.iniciarVista(); 
     }
 }

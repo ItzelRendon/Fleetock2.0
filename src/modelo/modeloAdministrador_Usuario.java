@@ -9,7 +9,6 @@ public class modeloAdministrador_Usuario {
     private int usuarioId;
     private String usuarioUsuario;
     private String usuarioContraseña;
-    private String usuarioEstatus;
     private String usuarioTipo;
     private Conexion conexion = new Conexion();
     
@@ -53,7 +52,7 @@ public class modeloAdministrador_Usuario {
         }
     }     
     
-    public boolean ActualizarUsuario(int usuarioId, String usuarioUsuario, String usuarioContraseña, String usuarioEstatus, String usuarioTipo) {                                         
+    public boolean ActualizarUsuario(int usuarioId, String usuarioUsuario, String usuarioContraseña, String usuarioTipo) {                                         
         try {
             Connection con = conexion.abrirConexion();
             
@@ -65,9 +64,8 @@ public class modeloAdministrador_Usuario {
             //BORRA EN LA TABLA DE USUARIO
                 "update login set usuario = '" 
                     + usuarioUsuario + "', contraseña = '" + usuarioContraseña
-                        + "', estatus = '" + usuarioEstatus
-                            + "', tipo = '" + usuarioTipo
-                                + "'where idLogin = " + usuarioId + ";");
+                        + "', tipo = '" + usuarioTipo
+                            + "'where idLogin = " + usuarioId + ";");
             
             conexion.cerrarConexion(con);
             return true;
@@ -88,7 +86,7 @@ public class modeloAdministrador_Usuario {
             
             try{
                 //EJECUTAR LA CONSULTA
-                ResultSet rs = s.executeQuery("select idLogin as ID, usuario as Usuario, contraseña as Contraseña, estatus as Estatus, tipo as Tipo from login");
+                ResultSet rs = s.executeQuery("select idLogin as ID, usuario as Usuario, contraseña as Contraseña, tipo as Tipo from login");
                 //PARA ESTABLECER EL MODELO AL JTABLE
                 modelo = new DefaultTableModel();
                 //OBTENIENDO LA INFORMACION DE LAS COLUMNAS

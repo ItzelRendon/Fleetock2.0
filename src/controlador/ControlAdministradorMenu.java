@@ -21,7 +21,6 @@ import modelo.modeloLogin;
 import vista.AdministradorMenu;
 import vista.Administrador_Usuario;
 import vista.Administrador_Destino;
-import vista.Administrador_Destino2;
 import vista.Administrador_Transporte;
 import vista.PEstiloViaje;
 import vista.PActividad;
@@ -87,11 +86,10 @@ public class ControlAdministradorMenu implements ActionListener, MouseListener{
             con.iniciarVista();
         }
         else if(vista.btnDestino == evento.getSource())
-        {
-            Administrador_Destino2 menu = new Administrador_Destino2(); 
+        { 
             Administrador_Destino nuevoPanel = new  Administrador_Destino(); 
             modeloAdministrador_Destino mo = new modeloAdministrador_Destino(); 
-            controlAdministrador_Destino con = new controlAdministrador_Destino(mo,nuevoPanel, menu); 
+            controlAdministrador_Destino con = new controlAdministrador_Destino(mo,nuevoPanel, vista); 
             new CambiaPanel(this.vista.PanelMenu,nuevoPanel);
             con.iniciarVista(); 
         }

@@ -2,17 +2,19 @@ package modelo;
 
 import java.io.FileInputStream;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class modeloAdministrador_Destino {
     private int destinoId;
     private String destinoNombre;
     private String destinoPais;
-    private String destinoClima;
     private String destinoImagen;
     private Conexion conexion = new Conexion();
     
-    public boolean destinoInsertar(String destinoNombre, String destinoPais, String destinoClima, String destinoImagen) {            
+    public boolean destinoInsertar(String destinoNombre, String destinoPais, String destinoImagen) {  
         try {
             Connection con = conexion.abrirConexion();
             FileInputStream archivofoto;
@@ -21,8 +23,8 @@ public class modeloAdministrador_Destino {
             
             //Update en la tabla destino
             int registro = s.executeUpdate(
-                 "insert into destino(nombre, pais, clima, foto)values("
-                         + "'"+destinoNombre+"','"+destinoPais+"','"+destinoClima+"','"+destinoImagen+"');");
+                 "insert into destino(nombre, pais, foto)values("
+                         + "'"+destinoNombre+"','"+destinoPais+"','"+destinoImagen+"');");
             
             conexion.cerrarConexion(con);
             return true;
@@ -30,9 +32,28 @@ public class modeloAdministrador_Destino {
         }catch (SQLException e){
             return false;
         }
-    }     
+    }
     
-    public boolean destinoActualizar(int destinoId, String destinoNombre, String destinoPais, String destinoClima, String destinoImagen) {                                           
+    public int ConsultarID() {
+        int id=0;
+        ResultSet rs;
+        try {
+            Connection con = conexion.abrirConexion();
+            Statement s = con.createStatement();
+            rs = s.executeQuery("SELECT MAX(idDestino) FROM destino"); 
+            while (rs.next())
+            {
+                id=rs.getInt (1);
+            }
+            conexion.cerrarConexion(con);
+                        
+        }catch (SQLException e){
+            return 0;
+        }
+        return id;
+    }
+    
+    public boolean destinoActualizar(int destinoId, String destinoNombre, String destinoPais, String destinoImagen) {                                           
         try {
             Connection con = conexion.abrirConexion();
             
@@ -43,7 +64,6 @@ public class modeloAdministrador_Destino {
             int registro = s.executeUpdate(
                 "update destino set nombre = '" 
                     + destinoNombre + "', pais = '" + destinoPais
-                        + "', clima = '" + destinoClima
                             + "', foto = '" + destinoImagen
                                 + "'where idDestino = " + destinoId + ";");
                     
@@ -55,7 +75,7 @@ public class modeloAdministrador_Destino {
         }
     }     
     
-    public boolean destinoEliminar(int destinoId, String destinoNombre, String destinoPais, String destinoClima, String destinoImagen) {                                         
+    public boolean destinoEliminar(int destinoId, String destinoNombre, String destinoPais, String destinoImagen) {                                         
         try {
             Connection con = conexion.abrirConexion();
             
@@ -86,7 +106,7 @@ public class modeloAdministrador_Destino {
             
             try{
                 //EJECUTAR LA CONSULTA
-                ResultSet rs = s.executeQuery("select idDestino as ID, nombre as Nombre, pais as Pais, clima as Clima, foto as Foto  from destino;");
+                ResultSet rs = s.executeQuery("select idDestino as ID, nombre as Nombre, pais as Pais, foto as Foto  from destino;");
                 //PARA ESTABLECER EL MODELO AL JTABLE
                 modelo = new DefaultTableModel();
                 //OBTENIENDO LA INFORMACION DE LAS COLUMNAS

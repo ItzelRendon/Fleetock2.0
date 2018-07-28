@@ -28,6 +28,7 @@ public class Administrador_Destino extends javax.swing.JPanel {
     private void initComponents() {
 
         jpndestino = new javax.swing.JPanel();
+        destino = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_Destino = new javax.swing.JTable();
@@ -38,20 +39,20 @@ public class Administrador_Destino extends javax.swing.JPanel {
         txt_Nombre = new javax.swing.JTextField();
         lbl_Pais = new javax.swing.JLabel();
         txt_Pais = new javax.swing.JTextField();
-        lbl_Clima = new javax.swing.JLabel();
-        txt_Clima = new javax.swing.JTextField();
         txt_Id = new javax.swing.JTextField();
         btn_Seleccionar = new javax.swing.JButton();
         txt_Foto = new javax.swing.JTextField();
         txt_Buscar = new javax.swing.JTextField();
         lbl_Foto = new javax.swing.JLabel();
-        btn_BorrarTexto = new javax.swing.JButton();
+        btn_Cancelar = new javax.swing.JButton();
         lbl_DestinoBuscar = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btn_Buscar = new javax.swing.JButton();
-        btn_Act = new javax.swing.JButton();
 
         jpndestino.setBackground(new java.awt.Color(255, 255, 255));
+        jpndestino.setLayout(new javax.swing.BoxLayout(jpndestino, javax.swing.BoxLayout.LINE_AXIS));
+
+        destino.setBackground(new java.awt.Color(255, 255, 255));
 
         tbl_Destino.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,14 +106,6 @@ public class Administrador_Destino extends javax.swing.JPanel {
             }
         });
 
-        lbl_Clima.setText("Clima:");
-
-        txt_Clima.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_ClimaActionPerformed(evt);
-            }
-        });
-
         txt_Id.setForeground(new java.awt.Color(255, 255, 255));
         txt_Id.setBorder(null);
         txt_Id.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -152,10 +145,10 @@ public class Administrador_Destino extends javax.swing.JPanel {
 
         lbl_Foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
 
-        btn_BorrarTexto.setText("Borrar texto");
-        btn_BorrarTexto.addActionListener(new java.awt.event.ActionListener() {
+        btn_Cancelar.setText("Cancelar");
+        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_BorrarTextoActionPerformed(evt);
+                btn_CancelarActionPerformed(evt);
             }
         });
 
@@ -176,127 +169,115 @@ public class Administrador_Destino extends javax.swing.JPanel {
             }
         });
 
-        btn_Act.setText("Asignar Datos");
-        btn_Act.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ActActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jpndestinoLayout = new javax.swing.GroupLayout(jpndestino);
-        jpndestino.setLayout(jpndestinoLayout);
-        jpndestinoLayout.setHorizontalGroup(
-            jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpndestinoLayout.createSequentialGroup()
+        javax.swing.GroupLayout destinoLayout = new javax.swing.GroupLayout(destino);
+        destino.setLayout(destinoLayout);
+        destinoLayout.setHorizontalGroup(
+            destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(destinoLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 10, Short.MAX_VALUE))
-            .addGroup(jpndestinoLayout.createSequentialGroup()
+            .addGroup(destinoLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jpndestinoLayout.createSequentialGroup()
-                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(destinoLayout.createSequentialGroup()
+                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_Seleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Foto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpndestinoLayout.createSequentialGroup()
+                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(destinoLayout.createSequentialGroup()
                                 .addComponent(lbl_DestinoBuscar)
                                 .addGap(10, 10, 10)
                                 .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_Buscar))
-                            .addGroup(jpndestinoLayout.createSequentialGroup()
-                                .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpndestinoLayout.createSequentialGroup()
+                            .addGroup(destinoLayout.createSequentialGroup()
+                                .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(destinoLayout.createSequentialGroup()
                                         .addGap(106, 106, 106)
                                         .addComponent(txt_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpndestinoLayout.createSequentialGroup()
-                                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(destinoLayout.createSequentialGroup()
+                                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lbl_Nombre)
-                                            .addComponent(lbl_Clima)
                                             .addComponent(lbl_Pais))
                                         .addGap(29, 29, 29)
-                                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txt_Pais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txt_Clima, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_Pais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_BorrarTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btn_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_Actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btn_Actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                                     .addComponent(btn_Insertar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_Act, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))))
+                                    .addComponent(btn_Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jpndestinoLayout.setVerticalGroup(
-            jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpndestinoLayout.createSequentialGroup()
+        destinoLayout.setVerticalGroup(
+            destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(destinoLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_Id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpndestinoLayout.createSequentialGroup()
+                .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(destinoLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Seleccionar))
-                    .addGroup(jpndestinoLayout.createSequentialGroup()
+                    .addGroup(destinoLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jpndestinoLayout.createSequentialGroup()
-                                .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpndestinoLayout.createSequentialGroup()
+                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(destinoLayout.createSequentialGroup()
+                                .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(destinoLayout.createSequentialGroup()
                                         .addGap(4, 4, 4)
                                         .addComponent(lbl_Nombre))
-                                    .addGroup(jpndestinoLayout.createSequentialGroup()
-                                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addGroup(destinoLayout.createSequentialGroup()
+                                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(btn_BorrarTexto))
-                                        .addGap(16, 16, 16)
-                                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btn_Cancelar))
+                                        .addGap(54, 54, 54)
+                                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(txt_Pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbl_Clima))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txt_Clima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lbl_Pais))))
                                 .addGap(34, 34, 34)
                                 .addComponent(txt_Foto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpndestinoLayout.createSequentialGroup()
+                            .addGroup(destinoLayout.createSequentialGroup()
                                 .addComponent(btn_Insertar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_Actualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_Eliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btn_Act)))
+                                .addGap(34, 34, 34)))
                         .addGap(18, 18, 18)
-                        .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpndestinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(destinoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_DestinoBuscar))
                             .addComponent(btn_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
+
+        jpndestino.add(destino);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpndestino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jpndestino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpndestino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpndestino, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -324,10 +305,6 @@ public class Administrador_Destino extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PaisActionPerformed
 
-    private void txt_ClimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ClimaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_ClimaActionPerformed
-
     private void txt_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_IdActionPerformed
@@ -344,39 +321,33 @@ public class Administrador_Destino extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_BuscarActionPerformed
 
-    private void btn_BorrarTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BorrarTextoActionPerformed
+    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_BorrarTextoActionPerformed
+    }//GEN-LAST:event_btn_CancelarActionPerformed
 
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_BuscarActionPerformed
 
-    private void btn_ActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ActActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btn_Act;
     public javax.swing.JButton btn_Actualizar;
-    public javax.swing.JButton btn_BorrarTexto;
     public javax.swing.JButton btn_Buscar;
+    public javax.swing.JButton btn_Cancelar;
     public javax.swing.JButton btn_Eliminar;
     public javax.swing.JButton btn_Insertar;
     public javax.swing.JButton btn_Seleccionar;
+    public javax.swing.JPanel destino;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JPanel jpndestino;
-    public javax.swing.JLabel lbl_Clima;
     public javax.swing.JLabel lbl_DestinoBuscar;
     public javax.swing.JLabel lbl_Foto;
     public javax.swing.JLabel lbl_Nombre;
     public javax.swing.JLabel lbl_Pais;
     public javax.swing.JTable tbl_Destino;
     public javax.swing.JTextField txt_Buscar;
-    public javax.swing.JTextField txt_Clima;
     public javax.swing.JTextField txt_Foto;
     public javax.swing.JTextField txt_Id;
     public javax.swing.JTextField txt_Nombre;

@@ -247,11 +247,6 @@ public class controlAdministrador_Transporte implements ActionListener, MouseLis
                 vista.lbl_Foto.setIcon(new ImageIcon(foto)); 
                 vista.txtUrl.setText(""+bandera); 
                 bandera=true; }
-                File file = archivo.getSelectedFile();
-                Image foto = vista.getToolkit().getImage(String.valueOf(file));   
-                foto = foto.getScaledInstance(159, 171, Image.SCALE_DEFAULT);
-                vista.lbl_Foto.setIcon(new ImageIcon(foto));
-                habilitar();
             }
          }
          //Boton buscar
