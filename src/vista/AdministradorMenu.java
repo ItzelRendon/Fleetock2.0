@@ -50,6 +50,11 @@ public class AdministradorMenu extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 60));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Menu.jpg"))); // NOI18N
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(117, 221, 117));
 
@@ -80,6 +85,7 @@ public class AdministradorMenu extends javax.swing.JPanel {
 
         jScrollPane2.setBorder(null);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         panelMenu.setBackground(new java.awt.Color(93, 66, 135));
@@ -116,7 +122,7 @@ public class AdministradorMenu extends javax.swing.JPanel {
 
         btnSitios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnSitios.setForeground(new java.awt.Color(255, 255, 255));
-        btnSitios.setText("Sitios turisticos ");
+        btnSitios.setText("Sitios turísticos ");
         btnSitios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnSitios.setContentAreaFilled(false);
 
@@ -193,6 +199,22 @@ public class AdministradorMenu extends javax.swing.JPanel {
     private void btnActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActividadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActividadActionPerformed
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        // TODO add your handling code here:
+        int posicion = panelMenu.getX(); 
+        if (posicion > -1)
+        {  
+            Animacion.Animacion.mover_izquierda(0, -180, 2, 2, panelMenu);
+            
+        }
+        else
+        {
+          
+            Animacion.Animacion.mover_derecha(-180, 0, 2, 2, panelMenu);
+
+        }
+    }//GEN-LAST:event_btnMenuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

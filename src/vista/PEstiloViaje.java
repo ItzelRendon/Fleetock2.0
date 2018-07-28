@@ -49,7 +49,7 @@ public class PEstiloViaje extends javax.swing.JPanel {
         btn_Buscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         taDescripcion = new javax.swing.JTextArea();
-        btnGenerarR = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(820, 540));
@@ -59,14 +59,21 @@ public class PEstiloViaje extends javax.swing.JPanel {
         jLabel6.setText("Tipos de Estilos de Viaje");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        tbl_EstiloViaje = new javax.swing.JTable()
+        {   public boolean isCellEditable( int rowIndex, int colIndex)
+            {   return false;
+            }
+        };
         tbl_EstiloViaje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Foto", "Tipo ", "Descripción", "Presupuesto max ", "Presupuesto min"
+                "ID", "Tipo ", "Descripción", "Presupuesto Máximo ", "Presupuesto Mínimo", "Foto"
             }
         ));
+        tbl_EstiloViaje.setFocusable(false);
+        tbl_EstiloViaje.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(tbl_EstiloViaje);
         if (tbl_EstiloViaje.getColumnModel().getColumnCount() > 0) {
             tbl_EstiloViaje.getColumnModel().getColumn(0).setMinWidth(0);
@@ -101,15 +108,15 @@ public class PEstiloViaje extends javax.swing.JPanel {
         txtTipo.setPreferredSize(new java.awt.Dimension(100, 14));
 
         lbl_Descripcion2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_Descripcion2.setText("Descripcion: ");
+        lbl_Descripcion2.setText("Descripción: ");
 
         lbl_PMax3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_PMax3.setText("Presupuesto max: ");
+        lbl_PMax3.setText("Presupuesto Máximo: ");
 
         txtPMax.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         lbl_PMin3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lbl_PMin3.setText("Presupuesto min: ");
+        lbl_PMin3.setText("Presupuesto Mínimo: ");
 
         txtPMin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
@@ -141,7 +148,8 @@ public class PEstiloViaje extends javax.swing.JPanel {
         taDescripcion.setBorder(null);
         jScrollPane2.setViewportView(taDescripcion);
 
-        btnGenerarR.setText("Generar reporte");
+        btnReporte.setText("Generar reporte");
+        btnReporte.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -167,18 +175,13 @@ public class PEstiloViaje extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(3, 3, 3)
                                         .addComponent(lbl_PMin3)))
+                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                                            .addComponent(txtPMax))
-                                        .addGap(35, 35, 35))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtPMin)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addComponent(txtTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                                    .addComponent(txtPMax)
+                                    .addComponent(txtPMin))
+                                .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
@@ -187,14 +190,14 @@ public class PEstiloViaje extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(txt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btn_Buscar)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(121, 121, 121)
-                                        .addComponent(btnGenerarR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,7 +259,7 @@ public class PEstiloViaje extends javax.swing.JPanel {
                             .addComponent(btn_Buscar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(btnGenerarR)))
+                        .addComponent(btnReporte)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
@@ -277,7 +280,7 @@ public class PEstiloViaje extends javax.swing.JPanel {
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnGenerarR;
+    public javax.swing.JButton btnReporte;
     public javax.swing.JButton btnSeleccionar;
     public javax.swing.JButton btn_Buscar;
     private javax.swing.JLabel jLabel6;

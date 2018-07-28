@@ -23,8 +23,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -283,26 +281,36 @@ public class controlPNuevoViaje implements ActionListener, PropertyChangeListene
                 if(!ban){
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     //Fecha actual
-                    Date fechaF = new Date();
+                    Date fechaA = new Date();
                     String estado = "";
-                    if(vista.fechaFin.getDate().before(fechaF) && vista.fechaInicio.getDate().before(fechaF)){
+                   
+//                    System.out.println("Fecha actual: " + fechaA);
+//                    System.out.println("Fecha de inicio: " + vista.fechaInicio.getDate());
+//                    System.out.println("Fecha fin: " + vista.fechaFin.getDate());
+//                    System.out.println("----------------------------------------------");
+
+                                        
+                    //Fecha inicio y Fecha fin después
+                    if(vista.fechaInicio.getDate().after(fechaA) && vista.fechaFin.getDate().after(fechaA)){
+                        estado = "Por Realizar";
+                    }
+                    
+                    //Fecha inicio y Fecha fin antes
+                    if(vista.fechaInicio.getDate().before(fechaA) && vista.fechaFin.getDate().before(fechaA)){
                         estado = "Terminado";
                     }
 
-                    if(vista.fechaInicio.getDate().after(fechaF)){
-                        estado = "Por Realizar";
-                    }
-
-                    if(vista.fechaFin.getDate().after(fechaF)){
+                    //Fecha inicio antes y fecha fin después
+                    if(vista.fechaInicio.getDate().before(fechaA) && vista.fechaFin.getDate().after(fechaA)){
                         estado = "En Curso";
                     }
-                    System.out.println("Nombre: " + vista.txtNombreViaje.getText());
-                    System.out.println("Fecha inicio: "+sdf.format(vista.fechaInicio.getDate()));
-                    System.out.println("Fecha fin: "+sdf.format(vista.fechaFin.getDate()));
-                    System.out.println("Estado: " + estado);
-                    System.out.println("idEstilo: " + idEstilo);
-                    System.out.println("idUsuario: " + Integer.parseInt(usuario[2]));
-                    System.out.println("idDestino: " + idDestino);
+//                    System.out.println("Nombre: " + vista.txtNombreViaje.getText());
+//                    System.out.println("Fecha inicio: "+sdf.format(vista.fechaInicio.getDate()));
+//                    System.out.println("Fecha fin: "+sdf.format(vista.fechaFin.getDate()));
+//                    System.out.println("Estado: " + estado);
+//                    System.out.println("idEstilo: " + idEstilo);
+//                    System.out.println("idUsuario: " + Integer.parseInt(usuario[2]));
+//                    System.out.println("idDestino: " + idDestino);
                     
                     if(modelo.insertarViaje(vista.txtNombreViaje.getText(),sdf.format(vista.fechaInicio.getDate()), sdf.format(vista.fechaFin.getDate()), estado, idEstilo, Integer.parseInt(usuario[2]), idDestino, jdFecha, actSelec)){
                         JOptionPane.showMessageDialog(null, "Su viaje se ha guardado con éxito", "Viaje guardado", JOptionPane.INFORMATION_MESSAGE);
@@ -346,9 +354,7 @@ public class controlPNuevoViaje implements ActionListener, PropertyChangeListene
                 }catch(NullPointerException e){
                 }
             }catch (ParseException ev){}
-           
-            //Number of Days to add
-            c.add(Calendar.DATE, 1);  
+            
 
             vista.fechaFin.setMinSelectableDate(c.getTime());
             for(int i=0; i<jdFecha.size(); i++){

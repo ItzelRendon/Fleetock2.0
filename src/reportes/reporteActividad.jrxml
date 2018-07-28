@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa78b113-d6eb-4750-a8f1-e7318aa41f7d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT nombre, actividad.descripcion,tipo FROM actividad, posee, estiloviaje WHERE actividad.idActividad=posee.Actividad_idActividad and estiloviaje.idEstiloViaje= posee.EstiloViaje_idEstiloViaje ORDER by idActividad]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="1" y="10" width="555" height="84" forecolor="#FFFFFF" backcolor="#5D4287" uuid="4e5966c7-7394-461e-a0e8-a60540abcb50"/>
+				<staticText>
+					<reportElement style="Title" x="298" y="10" width="213" height="35" uuid="2a75ee1f-c295-4e8e-9c69-4bb2406d8c1c"/>
+					<textElement textAlignment="Center">
+						<font fontName="Tahoma" size="28" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fleetock ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="298" y="45" width="214" height="29" uuid="f052e5ed-241a-48c3-a958-0d8243680e18"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Comic Sans MS" size="20" isBold="false" isItalic="true" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[El arte de viajar]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="25" y="25" width="151" height="29" forecolor="#FFFFFF" uuid="07d0fd05-b8aa-4b8a-a2a5-d005fb1667af"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="16" isBold="true" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Actividades ]]></text>
+				</staticText>
+				<line>
+					<reportElement x="25" y="54" width="151" height="1" forecolor="#FFFFFF" uuid="d1922bd6-039d-4d12-9e0c-8678a24c79b5"/>
+				</line>
+				<image>
+					<reportElement x="211" y="10" width="67" height="65" uuid="fd37e4da-281c-41c4-9537-c6f6acaf913c"/>
+					<imageExpression><![CDATA["C:\\Users\\Fabiola Paez\\Documents\\NetBeansProjects\\Fleetock2.0\\src\\imagenes\\reporteLogo.png"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="1" y="104" width="555" height="25" forecolor="#000000" backcolor="#75DD75" uuid="b4dc9314-52be-41f7-973c-87e4b2d44450"/>
+				<textField pattern="EEEEE, d MMM yyyy hh:mm:ss aaa">
+					<reportElement x="323" y="5" width="230" height="20" forecolor="#333333" uuid="fc14e0ed-3ce0-48dc-bfa6-863bf4878d60"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="278" y="5" width="45" height="20" uuid="87c8fbfe-2a29-4c21-8fe2-09d7517fa8c3"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="42" y="0" width="109" height="25" forecolor="#000000" backcolor="#5D4287" uuid="1a69cf4c-f9dc-4e7b-8b5d-7c4873a1da4f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Administrador ]]></text>
+				</staticText>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1" uuid="98f94b5e-40bf-4448-8498-bbd505b4a443"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="0" y="7" width="177" height="24" forecolor="#000000" backcolor="#CCCCFF" uuid="d33cd7fd-1dfd-475e-9b38-297df31139fe"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="177" y="7" width="206" height="24" forecolor="#000000" backcolor="#CCCCFF" uuid="3687859c-ae03-4794-a170-6d411c183337"/>
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" mode="Opaque" x="383" y="7" width="171" height="24" forecolor="#000000" backcolor="#CCCCFF" uuid="a419cfce-a520-4529-8613-4b4ea6c79c4a"/>
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estilo de viaje ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Title" mode="Opaque" x="0" y="0" width="554" height="18" uuid="2b1f7e18-6512-446f-ac05-ea75006bfea0"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="177" height="18" uuid="01474583-9dbb-4662-a91c-87660ba5c608"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="177" y="0" width="206" height="18" uuid="6d63cfb7-225d-4a31-8713-14bfa4c90bcd"/>
+					<box topPadding="0" leftPadding="3" bottomPadding="3" rightPadding="3">
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="383" y="0" width="171" height="18" uuid="d624a4ac-5347-458a-bb5c-a962a97b63ef"/>
+					<box topPadding="0" leftPadding="3" bottomPadding="3" rightPadding="3">
+						<leftPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="b176a22e-6f49-4315-bb48-4ce223e8d2b9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="945c5008-8ff6-4ecd-9057-9a04777af813"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="512" y="1" width="41" height="20" forecolor="#FFFFFF" uuid="16dae8ba-e21e-4909-b390-050cec08fab8"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, d MMM yyyy hh:mm:ss aaa">
+					<reportElement style="Column header" x="68" y="1" width="181" height="20" forecolor="#FFFFFF" uuid="241d2294-b9b5-472d-be44-b5c5b794e72d"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="false" isStrikeThrough="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="269" y="1" width="100" height="20" forecolor="#FFFFFF" uuid="795c559f-c44e-4d0a-98ae-a4ec076ac581"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fleetock ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="26" y="1" width="42" height="20" forecolor="#FFFFFF" uuid="e7f83f2a-dde3-4dc9-9362-4ceaf2a87c34"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fecha: ]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement style="Column header" x="450" y="2" width="63" height="20" forecolor="#FFFFFF" uuid="1c40a887-de02-4af5-83de-a9e0d587b73c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

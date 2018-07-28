@@ -17,6 +17,8 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ import vista.vistaComentarioos;
  *
  * @author ITZEL
  */
-public class ControlPInicio extends JFrame implements ActionListener{
+public class ControlPInicio extends JFrame implements ActionListener, KeyListener{
     private ModeloPInicio modelo;
     private PInicio vista;
     private JButton btnCom, btnDet;
@@ -88,8 +90,8 @@ public class ControlPInicio extends JFrame implements ActionListener{
         vista.setVisible(true);
         vista.btnTendencias.addActionListener(this);
         vista.btnSugerencias.addActionListener(this);
-        vista.btnBuscar.addActionListener(this);
         vista.txtBuscar.addActionListener(this);
+        vista.txtBuscar.addKeyListener(this);
         vista.guardar.addActionListener(this);
         vista.Detalles.setVisible(false);
         vista.pnl_DetalleDestino.setVisible(false);
@@ -185,7 +187,6 @@ public class ControlPInicio extends JFrame implements ActionListener{
             vista.panel_comentarios.add(jptexto, gridBagConstraints);
         }
     }
-    
     
     //Carga de destinos: tendencias, sugerencias, todos
     public void destinosConsultasVarias(String sentencia){
@@ -577,6 +578,15 @@ public class ControlPInicio extends JFrame implements ActionListener{
         vista.texto_nombre.setText("");
     }
     
+    public void buscar(){
+        if(vista.txtBuscar.getText().equals(""))
+            destinosConsultasVarias("select nombre, clima, foto, idDestino from destino;");
+        else{
+            destinosConsultasVarias("select nombre, clima, foto, idDestino from destino where nombre like '%"+vista.txtBuscar.getText()+"%';");   
+            vista.txtBuscar.requestFocus();
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) 
     { 
@@ -733,13 +743,8 @@ public class ControlPInicio extends JFrame implements ActionListener{
             });
         }
         //Botón de buscar 
-        else if(e.getSource() == vista.btnBuscar || e.getSource() == vista.txtBuscar){
-            if(vista.txtBuscar.getText().equals(""))
-                destinosConsultasVarias("select nombre, clima, foto, idDestino from destino;");
-            else{
-                destinosConsultasVarias("select nombre, clima, foto, idDestino from destino where nombre like '"+vista.txtBuscar.getText()+"%';");   
-                vista.txtBuscar.requestFocus();
-            }
+        else if(e.getSource() == vista.btnBuscar){
+            buscar();
         }
         //Botón de tendencias
         else if(e.getSource() == vista.btnTendencias){
@@ -780,6 +785,21 @@ public class ControlPInicio extends JFrame implements ActionListener{
 //                    System.out.println("j");
                 }
             }
+        }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        if(e.getSource() == vista.txtBuscar){
+            buscar();
         }
     }
     
